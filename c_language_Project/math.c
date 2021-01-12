@@ -1,12 +1,13 @@
 #include<stdio.h>
 
-void dec();
-void dec1();
-void dec2();
+void decimal();
+void decimal1();
+void decimal2();
 void gcf_lcm();
 void measure();
 void factorization();
-
+void conversion_base();
+void conversion_base1();
 
 int main()
 {
@@ -15,13 +16,15 @@ int main()
 	//dec2();
 	//gcf_lcm();
 	//measure();
-	factorization();
+	//factorization();
+	//conversion_base();
+	conversion_base1();
 
 }
 
 
 // 소수 판별하는 함수 
-void dec()
+void decimal()
 {
 	int num;
 	int i,cnt=0;
@@ -48,7 +51,7 @@ void dec()
 }
 
 // 소수의 합 구하는 함수
-void dec1()
+void decimal1()
 {
 	int num, i, j, sum=0, cnt=0;
 	
@@ -77,7 +80,7 @@ void dec1()
  } 
  
  // 소수의 개수 구하기
- void dec2()
+ void decimal2()
  {
  	int num[99];
  	int i,j,sum=0,cnt=0,k=2;
@@ -195,8 +198,82 @@ void gcf_lcm()
  	
  }
  
+ //진법 변환 - 10진수를 2진수로 변환하기 
+ void conversion_base()
+ {
+ 	int num, mok, nmg, res[100], cnt=0, i;
+	
+	printf("1000이하의 숫자를 입력하시오 : ");
+	scanf("%d",&num);
+	
+	
+	while(1)
+	{
+		mok = num/2; //16,8,4,2,1,
+		nmg = num%2; //0,0,0,0,0
+		num = mok;
+		
+		if(mok==0)
+		{
+			break;
+		}
+		
+		else
+		{
+			res[cnt]=nmg;
+			cnt++;
+			
+			if(mok==1)
+			{
+				res[cnt] = mok;
+			}
+		}
+	}
+	
+	for(i=0; i<=cnt;)
+	{
+		printf("%d",res[cnt]);
+		cnt--;
+	}
+	
+	 	
+ }
  
- 
+ //진법 변환 - 10진수를 2진수,8진수, 16진수로  변환하기 
+ void conversion_base1()
+ {
+ 	int num, b, c, d, e, f;
+ 	char a[16] = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+	
+	printf("1000이하의 숫자를 입력하시오 : ");
+	scanf("%d %d",&b, &c);
+	
+	d=1;
+	while(d <= c)
+	{
+		d *= b;
+	}
+	
+	while(1)
+	{
+		if(d>1)
+		{
+			 d/=b;
+		}
+		e = c/d;
+		f=c-e*d;
+		printf("%c",a[e]);
+		
+		if(d != 1)
+		{
+			c=f;
+		}
+		else
+		{
+			break;
+		}
+	}
+ }
  
  
  
