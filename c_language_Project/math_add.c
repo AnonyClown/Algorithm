@@ -4,15 +4,18 @@ void max_min_num();
 void number5();
 void find_number();
 void ones_complement();
+void greycode();
+void addbit();
 
- 
 int main()
 {
 	
 	//max_min_num();
 	//number5();
 	//find_number();
-	ones_complement();
+	//ones_complement();
+	//greycode();
+	addbit();
 }
 
 //최대값 최소값 구하기. 
@@ -180,8 +183,117 @@ void ones_complement()
 	}
 }
 
+//그레잌 코드 변환하기 
+void greycode()
+{
+	int num[4],grey[4],i,j,k,msb=0;
+	printf("2진수를 4자리를 입력하시오 : ");
+	
+	for(i=0; i<4; i++)
+	{
+		scanf("%d",&num[i]);
+	}
+	grey[0]=num[0];
+	
+	for(j=0; j<4; j++)
+	{
+		if(j>0)
+		{
+			if( num[j-1]!=num[j])
+			{
+				grey[j]=1;			
+			}
 
+			else
+			{
+				grey[j]=0;					
+			}
+			
+		}
+	}
+	
+	printf("변환된 그레이코드는 : "); 
+	for(k=0; k<4; k++)
+	{
+		printf("%d",grey[k]);
+	}
+	
+}
 
+//이진수 더하기 함수
+void addbit()
+{
+	int x[8],y[8],z[8],c=0,i,j,k,l,msb;
+	
+	printf("이진수 x(8자리)를 입력하시오 : ");
+	for(i=0; i<8; i++)
+	{
+		scanf("%d",&x[i]);
+	}
+	
+	printf("이진수 y(8자리)를 입력하시오 : ");
+	for(l=0; l<8; l++)
+	{
+		scanf("%d",&y[l]);
+	}
+	
+	for(j=7; j>=0; j--) //0010 0011
+	{
+		if(c==1)
+		{
+			z[j]=x[j]+y[j]+c;
+			
+			if(z[j]>1) // 2 or 3
+			{
+				
+				if(z[j]%2==0)
+				{
+					z[j]=0;
+					if(j==0)
+					{
+						msb=1;
+					}
+					c=1;
+				}
+				else
+				{
+					z[j]=1;
+					if(j==0)
+					{
+						msb=1;
+					}
+					c=1;
+				}
+			}
+			else
+			{
+				c=0;
+			}
+			
+		}
+		
+		else
+		{
+			if(x[j]+y[j]==2)
+			{
+				c=1;
+				z[j]=0;
+			}
+		
+			else
+			{
+				z[j]=x[j]+y[j];
+				c=0;
+			}
+		}
+	}
+	
+	printf("덧셈은 : ");
+	for(k=0; k<8; k++)
+	{
+		printf("%d",z[k]);
+	}
+} 
 
 
 
