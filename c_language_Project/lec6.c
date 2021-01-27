@@ -9,6 +9,9 @@ void lsosceles_triangle();
 void degree_rotation();
 void snail();
 void diagonal();
+void magic_square();
+void conversion_procession();
+
 
 int main()
 {
@@ -21,7 +24,9 @@ int main()
 	//lsosceles_triangle();
 	//degree_rotation();
 	//snail();
-	diagonal();
+	//diagonal();
+	//magic_square();
+	conversion_procession();
 
 }
 
@@ -105,7 +110,7 @@ void riul()
 
 }
 
-
+//다이아몬드 배열 만들기  
 void diamond()
 {
 	int num[5][5]={0,}, i, j, s, e, cnt=0,a,b;
@@ -145,6 +150,7 @@ void diamond()
 	}
 }
 
+//모래시계 모양 배열 만들기  
 void hourglass()
 {
 	int num[5][5]={0,}, i, j, s, e, cnt=0,a,b,tmp=1;
@@ -185,7 +191,7 @@ void hourglass()
 	}
 }
 
-
+//오른쪽이 빈 삼각형 배열 만들기. 
 void righttriangle()
 {
 	int num[7][7]={0, };
@@ -224,6 +230,7 @@ void righttriangle()
 }
 
 
+//이등변 삼각형 모양 배열 만들기. 
 void lsosceles_triangle()
 {
 	int col, row; //가로 세로 배열처럼 표현 
@@ -266,6 +273,7 @@ void lsosceles_triangle()
 	
 }
 
+//기존 배열에서 90도 회전한 배열 만들기. 
 void degree_rotation()
 {
 	int i,j,k,x,y;
@@ -310,6 +318,7 @@ void degree_rotation()
 	
 }
 
+//달팽이 모양 배열 만들기. 
 void snail()
 {
 	int k,c,i,j,f,n,x,y;
@@ -357,6 +366,7 @@ void snail()
 
 }
 
+//대각선으로 배열 채우기. 
 void diagonal()
 {
 	int a[5][5]={0};
@@ -393,6 +403,100 @@ void diagonal()
 	
 }
 
+//마방진 배열 만들기. 
+void magic_square()
+{
+	int i,j,k,nmg,x,y;
+	int a[5][5]={0};
+	
+	i=0;
+	j=5/2;
+	
+	for(k=1; k<=25; k++)
+	{
+		a[i][j]=k;
+		nmg = k-k/5*5;
+		
+		if(nmg==0)
+		{
+			i++;
+			continue;
+		}
+		
+		i--;
+		j++;
+		
+		if(i<0)
+		{
+			i=4;
+		}
+		
+		if(j>4)
+		{
+			j=0;
+		}
+	}
+	for(x=0; x<5; x++)
+	{
+		for(y=0; y<5; y++)
+		{
+			printf("%3d",a[x][y]);
+		}
+		printf("\n");
+	}
+}
+
+
+void conversion_procession()
+{
+	int col, row;
+	int i,j,k=1,l=1;
+	int x,y;
+	
+	printf("행과 열을 입력해주세요 : ");
+	scanf("%d %d", &row, &col);
+	
+	int a[row][col];
+	int b[col][row];
+	
+	for(i=0;i<row; i++)
+	{
+		for(j=0; j<col; j++)
+		{
+			a[i][j]=k;
+			k++;
+		}
+	}
+	
+	
+	for(i=0; i<col; i++)
+	{
+		for(j=0; j<row; j++)
+		{
+			b[i][j]=l;
+			l++;
+		}
+	}
+	
+	for(x=0; x<row; x++)
+	{
+		for(y=0; y<col; y++)
+		{
+			printf("%3d",a[x][y]);
+		}
+		printf("\n");
+	}
+	printf("\n\n");
+	
+	for(x=0; x<col; x++)
+	{
+		for(y=0; y<row; y++)
+		{
+			printf("%3d",b[x][y]);
+		}
+		printf("\n");
+	}
+}
 
 
 
