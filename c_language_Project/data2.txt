@@ -1,0 +1,4 @@
+ma hite 300 20
+ma cass 200 40
+it jinro 250 30
+it cham 290 10
